@@ -1,0 +1,23 @@
+{
+  "name": "react-testing",
+  "version": "1.0.0",
+  "description": "Project to support React Testing presentation",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "React",
+    "Testing"
+  ],
+  "author": "Jorge Florian",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^14.4.0",
+    "karma": "^1.7.0",
+    "karma-browserify": "^5.1.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-mocha": "^1.3.0",
+    "mocha": "^3.4.2"
+  }
+}

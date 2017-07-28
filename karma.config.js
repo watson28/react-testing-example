@@ -7,7 +7,11 @@ module.exports = function (config) {
         },
         browsers: ['Chrome'],
         browserify: {
-            debug: true
+            debug: true,
+            paths: ['./node_modules','.'],
+              transform: [
+                [ 'babelify', {presets: ["es2015", "react"]}]
+            ]
         },
         singleRun: true
     });

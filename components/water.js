@@ -10,7 +10,9 @@ var Water = createReactClass({
     },
 
     setTemperature: function (e) {
-        this.setState({ tempeture: e.target.value });
+        this.setState({
+            tempeture: parseInt(e.target.value, 10)
+        });
     },
 
     render: function () {
@@ -19,7 +21,7 @@ var Water = createReactClass({
         return (
             <div>
                 <input type="text" onChange={this.setTemperature} value={this.state.tempeture} />
-                <div className={matterState-'water'}>At {this.state.tempeture}°C, water is considered to be a "{matterState.toUpperCase()}" state of matter.</div>
+                <p className={matterState-'water'}>At {this.state.tempeture}°C, water is considered to be a "{matterState.toUpperCase()}" state of matter.</p>
             </div>
         );
 

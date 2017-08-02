@@ -5,26 +5,51 @@ var Water = createReactClass({
 
     getInitialState: function () {
         return {
-            tempeture: 18
+            tempeture: '18'
         };
+    },
+
+    render: function () {
+        return (
+            <div>
+                <input type="number" onChange={this.setTemperature} value={this.state.tempeture} />
+                {this.renderMessage()}
+            </div>
+        );
+    },
+
+    renderMessage: function () {
+        var message;
+
+        if (this.isNumeric(this.state.tempeture)) {
+            message = this.renderWaterMessage(parseInt(this.state.tempeture, 10));
+        } else {
+            message = this.renderIvalidTempetureMessage();
+        }
+
+        return message;
+    },
+
+    renderWaterMessage: function (tempeture) {
+        var matterState = this.getMatterState(tempeture);
+
+        return (
+            <p className={matterState-'water'}>
+                At {this.state.tempeture}°C, water is considered to be a "{matterState.toUpperCase()}" state of matter.
+            </p>
+        );
+    },
+
+    renderIvalidTempetureMessage: function () {
+        return (
+            <p>Invalid tempeture!!</p>
+        );
     },
 
     setTemperature: function (e) {
         this.setState({
-            tempeture: parseInt(e.target.value, 10)
+            tempeture: e.target.value,
         });
-    },
-
-    render: function () {
-        var matterState = this.getMatterState(this.state.tempeture);
-
-        return (
-            <div>
-                <input type="text" onChange={this.setTemperature} value={this.state.tempeture} />
-                <p className={matterState-'water'}>At {this.state.tempeture}°C, water is considered to be a "{matterState.toUpperCase()}" state of matter.</p>
-            </div>
-        );
-
     },
 
     getMatterState: function (tempeture) {
@@ -39,6 +64,10 @@ var Water = createReactClass({
         }
 
         return state;
+    },
+
+    isNumeric: function (string) {
+        return  string.length > 0 && !isNaN(string);
     }
 });
 

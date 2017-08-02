@@ -4,6 +4,13 @@
   "description": "Project to support React Testing presentation",
   "main": "index.js",
   "scripts": {
+    "build": "npm-run-all build-folder build-html build-js",
+    "prebuild": "rm -rf build/",
+    "build-folder": "mkdir build",
+    "build-html": "node scripts/build-html",
+    "build-js": "node scripts/build-js",
+    "serve": "http-server ./build",
+    "preserve": "npm run build",
     "test": "karma start karma.config.js"
   },
   "keywords": [
@@ -22,11 +29,15 @@
     "karma-browserify": "^5.1.1",
     "karma-chrome-launcher": "^2.2.0",
     "karma-mocha": "^1.3.0",
-    "mocha": "^3.4.2"
+    "mocha": "^3.4.2",
+    "npm-run-all": "^4.0.2"
   },
   "dependencies": {
     "create-react-class": "^15.6.0",
+    "http-server": "^0.10.0",
+    "prop-types": "^15.5.10",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-html-document": "^3.1.0"
   }
 }

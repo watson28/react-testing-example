@@ -9,7 +9,7 @@ var TodoItem = createReactClass({
     },
 
     render: function () {
-        <div>this.props.description</div>;
+        return <li>{this.props.description}</li>;
     }
 });
 

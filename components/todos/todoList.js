@@ -15,18 +15,20 @@ var TodoList = createReactClass({
         return (
             <div>
                 <AddTodo onAddItem={this.addTodoItem} />
-                {this.state.todos.map(this.renderTodoItem)}
+                <ul>
+                    {this.state.todos.map(this.renderTodoItem)}
+                </ul>
             </div>
         );
     },
 
-    renderTodoItem: function (todoDescription) {
-        return <TodoItem description={todoDescription} />
+    renderTodoItem: function (todoDescription, index) {
+        return <TodoItem description={todoDescription} key={index} />
     },
 
     addTodoItem: function (newTodo) {
         this.setState({
-            todos: todos.concat([newTodo])
+            todos: this.state.todos.concat([newTodo])
         });
     }
 });

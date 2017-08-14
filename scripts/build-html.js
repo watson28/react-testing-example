@@ -8,7 +8,8 @@ function getHtmlDocContent() {
         HTMLDocument,
         {
             title: 'React Testing Example',
-            scripts: ['/app.js']
+            scripts: ['/app.js'],
+            stylesheets: ['https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css']
         },
         React.createElement('div', null, 'My App')
     );

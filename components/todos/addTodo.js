@@ -14,21 +14,25 @@ var AddTodo = createReactClass({
 
     render: function () {
         return (
-            <div>
+            <form onSubmit={this.addTodo}>
                 <input type="text" onChange={this.onChange} value={this.state.inputValue} />
-                <button onClick={this.addTodo}>Add</button>
-            </div>
+                <button type="submit">Add</button>
+            </form>
         );
     },
 
     onChange: function (event) {
-        this.setState({
-            inputValue: event.target.value
-        });
+        this.setState({inputValue: event.target.value});
     },
 
-    addTodo: function () {
-        this.props.onAddItem(this.state.inputValue.trim());
+    addTodo: function (e) {
+        var inputValue = this.state.inputValue;
+
+        if (inputValue) {
+            this.props.onAddItem(inputValue.trim());
+            this.setState({inputValue: ''});
+        }
+        e.preventDefault();
     }
 });
 

@@ -7,9 +7,12 @@ describe('Water component', function () {
 
     var renderedComponent;
     var textElement;
+    var mockProps = {
+        initialTempeture: '18'
+    }
 
     beforeEach(function () {
-        renderedComponent = ReactTestUtils.renderIntoDocument(<Water />);
+        renderedComponent = ReactTestUtils.renderIntoDocument(<Water {...mockProps} />);
         textElement = ReactTestUtils.findRenderedDOMComponentWithTag(renderedComponent, 'p');
     });
 

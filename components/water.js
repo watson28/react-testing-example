@@ -1,11 +1,16 @@
 var React = require('react');
 var createReactClass = require('create-react-class');
+var PropTypes = require('prop-types');
 
 var Water = createReactClass({
 
+    propTypes: {
+        initialTempeture: PropTypes.number
+    },
+
     getInitialState: function () {
         return {
-            tempeture: '18'
+            tempeture: this.props.initialTempeture.toString()
         };
     },
 

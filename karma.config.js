@@ -1,8 +1,12 @@
 module.exports = function (config) {
     config.set({
         frameworks: ['mocha', 'browserify'],
-        files: ['test/**/*.js'],
+        files: [
+            'polyfill/**/*.js',
+            'test/**/*.js'
+        ],
         preprocessors: {
+        'polyfill/**/*.js': [ 'browserify'],
         'test/**/*.js': [ 'browserify']
         },
         browsers: ['PhantomJS'],
@@ -10,7 +14,8 @@ module.exports = function (config) {
             debug: true,
             paths: ['./node_modules','.'],
             transform: [
-                [ 'babelify', {presets: ["es2015", "react"]}]
+                [ 'babelify', {presets: ["es2015", "react"]}],
+                ['rewireify']
             ]
         },
         singleRun: true

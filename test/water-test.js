@@ -9,9 +9,20 @@ describe('Water component', function () {
     var textElement;
     var mockProps = {
         initialTempeture: '18'
-    }
+    };
+    var mockPromise = new Promise(function (resolve, reject) {
+        resolve(760);
+    });
+    var mockweatherService = {
+        getAtmosphericPressure: function () {
+            return mockPromise;
+        }
+    };
 
     beforeEach(function () {
+        Water.__set__({
+            envWeatherService: mockweatherService
+        });
         renderedComponent = ReactTestUtils.renderIntoDocument(<Water {...mockProps} />);
         textElement = ReactTestUtils.findRenderedDOMComponentWithTag(renderedComponent, 'p');
     });

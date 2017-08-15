@@ -33,10 +33,12 @@
     "karma-phantomjs-launcher": "^1.0.4",
     "mocha": "^3.4.2",
     "npm-run-all": "^4.0.2",
-    "onchange": "^3.2.1"
+    "onchange": "^3.2.1",
+    "rewireify": "^0.2.5"
   },
   "dependencies": {
     "create-react-class": "^15.6.0",
+    "es6-promise": "^4.1.1",
     "http-server": "^0.10.0",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",

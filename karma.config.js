@@ -11,7 +11,6 @@ module.exports = function (config) {
         },
         browsers: ['PhantomJS'],
         browserify: {
-            debug: true,
             paths: ['./node_modules','.'],
             transform: [
                 [ 'babelify', {presets: ["es2015", "react"]}],

@@ -47,10 +47,30 @@ var Water = createReactClass({
     renderDefault: function () {
         return (
             <div>
-                <input type="number" onChange={this.setTemperature} value={this.state.tempeture} />
-                {this.renderMessage()}
+                {this.renderAtmPressure()}
+                <fieldset>
+                    <input type="number" onChange={this.setTemperature} value={this.state.tempeture} />
+                    {this.renderMessage()}
+                </fieldset>
             </div>
         );
+    },
+
+    renderAtmPressure: function () {
+        var result;
+        
+        if (this.state.error) {
+            result = <small>There was an error getting the Atm pressure</small>
+        } else {
+            result = (
+                <div>
+                    <small>Atm pressure of current location (mm Hg): {this.state.AtmosphericPressure}</small><br/>
+                    <small>Boiling point (°C): {this.getBoilingPoint().toFixed(2)}</small>
+                </div>
+            );
+        }
+
+        return result;
     },
 
     renderMessage: function () {

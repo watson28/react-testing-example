@@ -1,4 +1,4 @@
-var API_WHEATER_URL = 'http://api.openweathermap.org/data/2.5/weather';
+var API_WHEATER_URL = 'https://api.openweathermap.org/data/2.5/weather';
 var API_KEY = 'e3312434e1167511132f2cdae8c29509';
 var geolocationService = require('services/geolocation');
 

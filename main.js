@@ -1,6 +1,7 @@
 var React = require('react');
 var createReactClass = require('create-react-class');
 var Water = require('components/water');
+var WaterSimple = require('components/water-simple');
 var TodosList = require('components/todos/todoList');
 var ReactDOM = require('react-dom');
 
@@ -10,6 +11,7 @@ var IndexPage = createReactClass({
         return (
             <div className="container">
                 {this.renderTodosComponent()}
+                {this.renderWaterSimple()}
                 {this.renderWaterComponent()}
             </div>
         );
@@ -21,8 +23,23 @@ var IndexPage = createReactClass({
         if (this.shouldRenderTodos()) {
             result = (
                 <div className="jumbotron">
-                    <h1>TodoList component</h1>
+                    <h1>TodoList</h1>
                     <TodosList />
+                </div>
+            );
+        }
+
+        return result;
+    },
+
+    renderWaterSimple: function () {
+        var result;
+
+        if (this.shouldRenderWaterSimple()) {
+            result = (
+                <div className="jumbotron">
+                    <h1>Simple Water</h1>
+                    <WaterSimple initialTempeture={18} />
                 </div>
             );
         }
@@ -36,7 +53,7 @@ var IndexPage = createReactClass({
         if (this.shouldRenderWater()) {
             result = (
                 <div className="jumbotron">
-                    <h1>Water component</h1>
+                    <h1>Complex Water</h1>
                     <Water initialTempeture={18} />
                 </div>
             );
@@ -53,6 +70,11 @@ var IndexPage = createReactClass({
     shouldRenderWater: function () {
         var compQueryValue = this.getComponentQueryValue();
         return !compQueryValue || compQueryValue === 'water';
+    },
+
+    shouldRenderWaterSimple: function () {
+        var compQueryValue = this.getComponentQueryValue();
+        return !compQueryValue || compQueryValue === 'water-simple';
     },
 
     getComponentQueryValue: function () {

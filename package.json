@@ -12,6 +12,7 @@
     "serve": "http-server ./build",
     "preserve": "npm run build",
     "watch:serve": "onchange 'components/**/*.js' -- npm run serve",
+    "start": "npm run serve",
     "test": "karma start karma.config.js"
   },
   "keywords": [

@@ -1,3 +1,5 @@
+process.env.CHROME_BIN = require('puppeteer').executablePath();
+
 module.exports = function (config) {
     config.set({
         frameworks: ['mocha', 'browserify'],
@@ -9,7 +11,7 @@ module.exports = function (config) {
         'polyfill/**/*.js': [ 'browserify'],
         'test/**/*.js': [ 'browserify']
         },
-        browsers: ['PhantomJS'],
+        browsers: ['CustomHeadless'],
         browserify: {
             paths: ['./node_modules','.'],
             transform: [
@@ -17,6 +19,14 @@ module.exports = function (config) {
                 ['rewireify']
             ]
         },
-        singleRun: true
+        singleRun: true,
+
+        // running headless chrome on a sandbox doesnt work.
+        customLaunchers: {
+            CustomHeadless: {
+                base: 'ChromeHeadless',
+                flags: ['--no-sandbox']
+            }
+        }
     });
 };

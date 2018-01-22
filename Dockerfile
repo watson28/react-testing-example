@@ -10,12 +10,18 @@ RUN apt-get update -qqy \
 
 ENV NODE_VERSION 8.9.4
 
-RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz" && \
-    tar -xzf "node-v$NODE_VERSION-linux-x64.tar.gz" -C /usr/local --strip-components=1 && \
-    rm "node-v$NODE_VERSION-linux-x64.tar.gz"
+RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz" \
+  && tar -xzf "node-v$NODE_VERSION-linux-x64.tar.gz" -C /usr/local --strip-components=1 \
+  && rm "node-v$NODE_VERSION-linux-x64.tar.gz"
+
+RUN wget https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64.deb \
+  && dpkg -i dumb-init_*.deb \
+  && rm dumb-init_1.2.0_amd64.deb
 
 EXPOSE 8080
 
 WORKDIR /workspace
+
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
 CMD npm start

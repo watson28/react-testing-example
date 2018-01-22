@@ -12,7 +12,7 @@ docker build -t react-example .
 
 ### Running application
 ```
-docker run --rm -p 8080:8080 -v $(pwd):/workspace react-example npm start
+docker run --rm -p 8080:8080 -v $(pwd):/workspace react-example
 ```
 
 ### Running tests
